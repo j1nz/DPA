@@ -1,0 +1,5 @@
+eclipse.preferences.version=1
+encoding//WebContent/pages/management/welcome.jsp=UTF-8
+encoding//src/org/dpa/common/SQLCommand.java=UTF-8
+encoding//src/org/dpa/model/dao/AccountDAO.java=UTF-8
+encoding//src/org/dpa/model/dao/RoleDAO.java=UTF-8
