@@ -1,6 +1,7 @@
 eclipse.preferences.version=1
 encoding//WebContent/pages/management/welcome.jsp=UTF-8
 encoding//src/internship/fpt/dpa/common/SQLCommand.java=UTF-8
+encoding//src/internship/fpt/dpa/model/bo/PetBO.java=UTF-8
 encoding//src/internship/fpt/dpa/model/bo/RoleBO.java=UTF-8
 encoding//src/internship/fpt/dpa/model/dao/AccountDAO.java=UTF-8
 encoding//src/internship/fpt/dpa/model/dao/RoleDAO.java=UTF-8

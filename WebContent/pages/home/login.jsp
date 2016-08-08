@@ -26,34 +26,39 @@
 			
 		</div>
 		<div id="content">
-			<form action="LoginServlet" method="POST" accept-charset="utf-8">
-				<table>
-					<tr>
-						<th colspan="2">
-							<%if(session.getAttribute("message") != null){ %>
-								<%=session.getAttribute("message") %>
-							<%}%>
-						</th>
-					</tr>
-					<tr>
-						<td>Username:</td>
-						<td><input type="text" name="username" placeholder="your username" required /></td>
-					</tr>
-					<tr>
-						<td>Password:</td>
-						<td><input type="password" name="password" placeholder="your password" required /></td>
-					</tr>
-					<tr>
-						<td></td>
-						<td><input type="checkbox" name="rememberUsername" />Remember username</td>
-					</tr>
-		
-					<tr>
-						<td></td>
-						<td align="right"><button type="submit">Login</button></td>
-					</tr>
-				</table>
-				
+			
+			<form class="form-horizontal" role="form" action="LoginServlet" method="POST">
+				<div class="panel panel-default">
+					<div class="panel-body">
+						<%if(session.getAttribute("message") != null){ %>
+							<%=session.getAttribute("message") %>
+						<%}%>
+					</div>
+				</div>
+			  	<div class="form-group">
+			    	<label class="control-label col-sm-2" for="email">User:</label>
+			    	<div class="col-sm-10">
+			      		<input type="text" class="form-control" name="username" placeholder="Enter username">
+			    	</div>
+			  	</div>
+			  	<div class="form-group">
+				    <label class="control-label col-sm-2" for="pwd">Password:</label>
+				    <div class="col-sm-10"> 
+				      	<input type="password" class="form-control" name="password" placeholder="Enter password">
+				    </div>
+			  	</div>
+				<div class="form-group"> 
+				   	<div class="col-sm-offset-2 col-sm-10">
+				      <div class="checkbox">
+				        <label><input type="checkbox"> Remember me</label>
+				      </div>
+				    </div>
+				  </div>
+				  <div class="form-group"> 
+				    <div class="col-sm-offset-2 col-sm-10">
+				      <button type="submit" class="btn btn-default">Submit</button>
+				    </div>
+				  </div>
 			</form>
 		</div>
 		<div id="right">

@@ -34,8 +34,7 @@ public class ShowManagement extends HttpServlet {
 			RequestDispatcher view = request.getRequestDispatcher("pages/management/welcome.jsp");
 			view.forward(request, response);
 		} else if(session == null || "user".equals(session.getAttribute("role"))) {
-			RequestDispatcher view = request.getRequestDispatcher("Home");
-			view.forward(request, response);
+			response.sendRedirect("Home");
 		}
 	}
 

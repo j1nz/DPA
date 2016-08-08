@@ -44,6 +44,11 @@ public class LoginServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+		HttpSession session = request.getSession();
+		/**
+		 * Kiem tra xem tai khoan do co login vao chua, va neu login vao roi thi co quyen truy cap hay khong
+		 */
 		
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
@@ -55,16 +60,17 @@ public class LoginServlet extends HttpServlet {
 		acc.setPassword(pe.MD5(password));
 		
 		AccountBO accBO = AccountBO.getInstance();
-
-		HttpSession session = request.getSession();
 		
 		if (accBO.checkLogin(acc)){
 			String message = accBO.getNotification();
 			String role = accBO.getRoleName();
+			String avatar = accBO.getAvatar();
 			
 			session.setAttribute("message", message);
 			session.setAttribute("username", username);
 			session.setAttribute("role", role);
+			session.setAttribute("avatar", avatar);
+			
 			RequestDispatcher view = request.getRequestDispatcher("ShowManagement");
 			view.forward(request, response);
 		} else {
@@ -72,6 +78,8 @@ public class LoginServlet extends HttpServlet {
 			RequestDispatcher view = request.getRequestDispatcher("ShowLoginServlet");
 			view.forward(request, response);
 		}
+		
+
 	}
 
 }

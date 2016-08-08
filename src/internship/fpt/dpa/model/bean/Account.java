@@ -11,6 +11,7 @@ public class Account {
 	private Date dateCreate;
 	private Date dateExpires;
 	private String messenge;
+	private String avatar;
 	
 	public Account() {
 		// TODO Auto-generated constructor stub
@@ -126,6 +127,20 @@ public class Account {
 	 */
 	public void setMessenge(String message) {
 		this.messenge = message;
+	}
+
+	/**
+	 * @return the avatar
+	 */
+	public String getAvatar() {
+		return avatar;
+	}
+
+	/**
+	 * @param avatar the avatar to set
+	 */
+	public void setAvatar(String avatar) {
+		this.avatar = avatar;
 	}
 	
 }

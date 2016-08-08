@@ -9,7 +9,16 @@
 		</div>
 		<div id="content">
 			Hello <%=session.getAttribute("username") %></br>
-			You are <%=session.getAttribute("role") %>
+			You are <%=session.getAttribute("role") %></br>
+			
+			<form action="ShowLoginServlet">
+				<button value="logout" name="logout" class="btn btn-danger navbar-btn">Logout</button>
+			</form>
+
+			</br>
+			
+			<a href="ShowListPet" >List Pet</a>
+			
 		</div>
 		<div id="right">
 			

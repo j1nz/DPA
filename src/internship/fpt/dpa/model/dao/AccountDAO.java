@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import internship.fpt.dpa.common.ConnectDB;
 import internship.fpt.dpa.common.SQLCommand;
@@ -57,6 +59,10 @@ public class AccountDAO {
 		return check;
 	}
 	
+	
+	public String getAvatar(){
+		return ac.getAvatar();
+	}
 	/**
 	 * Tra ve thong bao cho nguoi dung biet
 	 * @return messeges
@@ -87,14 +93,16 @@ public class AccountDAO {
 	public boolean checkUsername(String username) {
 		boolean checkUsername = false;
 		
-		String sql = SQLCommand.SelectRowWithWHERE("username", "dbo.[Account]", "username = ?");
+		String sql = SQLCommand.SelectRowWithWHERE("username, avatar", "dbo.[Account]", "username = ?");
 		System.out.println(sql);
+		System.out.println(username);
 		try {
 			pstm = cn.prepareStatement(sql);
 			pstm.setString(1, username);
 			rs = pstm.executeQuery();
 			
 			if(rs.next()) {
+				ac.setAvatar(rs.getString("avatar"));
 				checkUsername = true;
 			}
 		} catch (SQLException e) {
@@ -120,7 +128,7 @@ public class AccountDAO {
 	} 
 	
 	/**
-	 * Check Password cuar nguoi dung
+	 * Check Password cua nguoi dung
 	 * @param password
 	 * @return neu dung tra ve true va nguoc lai
 	 */
@@ -202,4 +210,38 @@ public class AccountDAO {
 		}
 		
 	}
+
+	/**
+	 * Liet ke tat ca cac user co trong database
+	 * @return List<Account> list
+	 */
+	public List<Account> listAccount() {
+		List<Account> list = new ArrayList<Account>();
+		
+		String sql = SQLCommand.SelectAllRow("Account");
+		
+		try {
+			pstm = cn.prepareStatement(sql);
+			rs = pstm.executeQuery();
+			
+			while(rs.next()) {
+				Account acc = new Account();
+				acc.setUsername(rs.getString("username"));
+				acc.setPassword(rs.getString("password"));
+				acc.setEmail(rs.getString("email"));
+				acc.setMemberID(rs.getInt("memberID"));
+				acc.setRoleID(rs.getInt("roleID"));
+				acc.setDateCreate(rs.getDate("dateCreate"));
+				acc.setDateExpires(rs.getDate("dateExpires"));
+				acc.setAvatar(rs.getString("avatar"));
+				
+				list.add(acc);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return list;
+	}
+	
 }
