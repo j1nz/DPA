@@ -5,9 +5,7 @@
 	<jsp:include page="/views/shared/_header.jsp"></jsp:include>
 	<div id="main">
 		
-		<div id="left">
-			
-		</div>
+		<jsp:include page="/views/shared/_menu-left.jsp"></jsp:include>
 		<div id="content">
 			Welcome to my site <a href="ShowLoginServlet" >Login</a>
 		</div>

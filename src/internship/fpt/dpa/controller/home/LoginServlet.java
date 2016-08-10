@@ -66,7 +66,7 @@ public class LoginServlet extends HttpServlet {
 			String role = accBO.getRoleName();
 			String avatar = accBO.getAvatar();
 			
-			session.setAttribute("message", message);
+			request.setAttribute("message", message);
 			session.setAttribute("username", username);
 			session.setAttribute("role", role);
 			session.setAttribute("avatar", avatar);
@@ -74,7 +74,7 @@ public class LoginServlet extends HttpServlet {
 			RequestDispatcher view = request.getRequestDispatcher("ShowManagement");
 			view.forward(request, response);
 		} else {
-			session.setAttribute("message", accBO.getNotification());
+			request.setAttribute("message", accBO.getNotification());
 			RequestDispatcher view = request.getRequestDispatcher("ShowLoginServlet");
 			view.forward(request, response);
 		}

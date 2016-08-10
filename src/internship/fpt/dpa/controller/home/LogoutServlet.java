@@ -1,8 +1,6 @@
-package internship.fpt.dpa.controller.management;
+package internship.fpt.dpa.controller.home;
 
 import java.io.IOException;
-
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -11,16 +9,16 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
- * Servlet implementation class ShowManagement
+ * Servlet implementation class LogoutServlet
  */
-@WebServlet("/ShowManagement")
-public class ShowManagement extends HttpServlet {
+@WebServlet("/LogoutServlet")
+public class LogoutServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ShowManagement() {
+    public LogoutServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,12 +28,10 @@ public class ShowManagement extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		if("admin".equals(session.getAttribute("role"))) {
-			RequestDispatcher view = request.getRequestDispatcher("pages/management/welcome.jsp");
-			view.forward(request, response);
-		} else if(session == null || "user".equals(session.getAttribute("role"))) {
-			response.sendRedirect("pages/frontend/showpet.jsp");
-		}
+		
+		session.invalidate();
+	    response.sendRedirect("Home");
+	    return; // <--- Here.
 	}
 
 	/**

@@ -4,16 +4,12 @@
 <body>
 	<div id="main">
 		
-		<div id="left">
-			
-		</div>
+		<jsp:include page="/views/shared/_menu-left.jsp"></jsp:include>
 		<div id="content">
 			Hello <%=session.getAttribute("username") %></br>
 			You are <%=session.getAttribute("role") %></br>
 			
-			<form action="ShowLoginServlet">
-				<button value="logout" name="logout" class="btn btn-danger navbar-btn">Logout</button>
-			</form>
+			
 
 			</br>
 			

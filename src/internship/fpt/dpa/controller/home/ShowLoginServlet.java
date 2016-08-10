@@ -33,11 +33,6 @@ public class ShowLoginServlet extends HttpServlet {
 		
 		HttpSession session = request.getSession(true);
 		
-		if(request.getParameter("logout") != null) {
-			session.invalidate();
-		    response.sendRedirect("Home");
-		    return; // <--- Here.
-		}
 		
 		if(session.isNew()) {
 			RequestDispatcher view = request.getRequestDispatcher("pages/home/login.jsp");

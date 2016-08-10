@@ -83,7 +83,7 @@ public class PetDAO {
       ,[monthReceived]
       ,[yearReceived]
       ,[avatar]
-	 * @param p
+	 * @param Pet p
 	 */
 	public void addPet(Pet p) {
 		String sql = "INSERT INTO Pet VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
@@ -110,4 +110,7 @@ public class PetDAO {
 		}
 	}
 
+	public void deletePet(String id) {
+		
+	}
 }

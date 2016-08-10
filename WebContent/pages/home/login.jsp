@@ -22,19 +22,20 @@
 	
 	<div id="main">
 		
-		<div id="left">
-			
-		</div>
+
+		<jsp:include page="/views/shared/_menu-left.jsp"></jsp:include>
+
 		<div id="content">
-			
-			<form class="form-horizontal" role="form" action="LoginServlet" method="POST">
-				<div class="panel panel-default">
-					<div class="panel-body">
-						<%if(session.getAttribute("message") != null){ %>
-							<%=session.getAttribute("message") %>
-						<%}%>
+			</br>
+			<%if(request.getAttribute("message") != null){ %>
+					<div class="panel panel-default">
+						<div class="panel-body">
+							<%=request.getAttribute("message") %>
+						</div>
 					</div>
-				</div>
+				<%}%>
+			<form class="form-horizontal" role="form" action="LoginServlet" method="POST">
+				
 			  	<div class="form-group">
 			    	<label class="control-label col-sm-2" for="email">User:</label>
 			    	<div class="col-sm-10">
