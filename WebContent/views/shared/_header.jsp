@@ -2,12 +2,12 @@
     pageEncoding="UTF-8"%>
 <html>
 <head>
-	<link rel="stylesheet" href="content/css/bootstrap.min.css">
-	<link rel="stylesheet" href="content/css/style.css" >
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/style.css" >
 	<!--FONT-AWESOME CSS-->
 	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
-	<script src="content/js/jquery.min.js"></script>
-	<script src="content/js/bootstrap.min.js"></script>
+	<script src="js/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
 	
 	
 	<!-- Navigation -->
@@ -21,21 +21,23 @@
 	                <span class="icon-bar"></span>
 	                <span class="icon-bar"></span>
 	            </button>
-	            <a class="navbar-brand" href="Home">DPA Web Application</a>
+	            <a class="navbar-brand" href="Welcome">DPA</a>
 	        </div>
 	        <!-- Nav collapse -->
 	        <div class="collapse navbar-collapse" id="menu">
 	           <ul class="nav navbar-nav">
-					<li class="active"><a href="#">Link</a></li>
-					<li><a href="#">Link</a></li>
-					<li class="dropdown"><a href="#" class="dropdown-toggle"
-						data-toggle="dropdown">Link<b class="caret"></b></a>
+					<li><a href="Home">Home</a></li>
+					<li class="dropdown active"><a href="#" class="dropdown-toggle"
+						data-toggle="dropdown">Product<b class="caret"></b></a>
 						<ul class="dropdown-menu">
-							<li><a href="#">Link</a></li>
+							<li><a href="#">Food</a></li>
+							<li><a href="#">Shampoo</a></li>
 							<li class="divider"></li>
-							<li><a href="#">Link</a></li>
+							<li><a href="#">All Product</a></li>
 						</ul>
 					</li>
+					<li><a href="#">Health Care</a></li>
+					<li><a href="#">Donate Pet</a></li>
 					<li><a href="Contact">Contact</a></li>
 					<li><a href="About">About us</a></li>
 				</ul>
@@ -49,8 +51,9 @@
 						<li class="dropdown"><a href="#"
 							class="dropdown-toggle" data-toggle="dropdown"><b class="caret"></b></a>
 							<ul class="dropdown-menu">
-								<li><a href="#">Trang ca nhan</a></li>
-								<li><a href="#">Link</a></li>
+								<li><a href="#">Profile</a></li>
+								<li><a href="ShowManagement">Management</a></li>
+								<li><a href="#">Notification</a></li>
 								<li class="divider"></li>
 								<li><a href="LogoutServlet">Logout</a></li>
 								

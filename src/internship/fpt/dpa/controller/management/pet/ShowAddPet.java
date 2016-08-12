@@ -1,6 +1,8 @@
 package internship.fpt.dpa.controller.management.pet;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import internship.fpt.dpa.model.bean.PetType;
 import internship.fpt.dpa.model.bo.PetBO;
 
 /**
@@ -37,6 +40,12 @@ public class ShowAddPet extends HttpServlet {
 			RequestDispatcher view = request.getRequestDispatcher("pages/home/login.jsp");
 			view.forward(request, response);
 		} else if("admin".equals(session.getAttribute("role"))){
+			
+			PetBO pbo = PetBO.getInstance();
+			request.setAttribute("typePet", pbo.petType());
+			
+			request.setAttribute("health", pbo.getHealth());
+			
 			RequestDispatcher view = request.getRequestDispatcher("pages/pet/addpet.jsp");
 			view.forward(request, response);
 		} else {

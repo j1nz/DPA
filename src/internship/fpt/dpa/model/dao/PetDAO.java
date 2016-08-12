@@ -1,6 +1,7 @@
 package internship.fpt.dpa.model.dao;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -53,9 +54,8 @@ public class PetDAO {
 				p.setNickname(rs.getString("nickname"));
 				p.setDonateID(rs.getInt("donateID"));
 				p.setUsername(rs.getString("username"));
-				p.setDayReceived(rs.getInt("dayReceived"));
-				p.setMonthReceived(rs.getInt("monthReceived"));
-				p.setYearReceived(rs.getInt("yearReceived"));
+				p.setDateReceived(rs.getDate("dateReceived"));
+				
 				p.setAvatar(rs.getString("avatar"));
 				
 				lPet.add(p);
@@ -97,9 +97,8 @@ public class PetDAO {
 			pstm.setInt(6, p.getStatus());
 			pstm.setInt(7, p.getDonateID());
 			pstm.setString(8, p.getUsername());
-			pstm.setInt(9, p.getDayReceived());
-			pstm.setInt(10, p.getMonthReceived());
-			pstm.setInt(11, p.getYearReceived());
+			pstm.setDate(9, (Date) p.getDateReceived());
+			
 			pstm.setString(12, p.getAvatar());
 			
 			pstm.executeUpdate();
@@ -113,4 +112,23 @@ public class PetDAO {
 	public void deletePet(String id) {
 		
 	}
+	
+	
+	public int countPet(){
+		int count = 0;
+        try{
+	        String sql = "SELECT count(petID) FROM Pet";
+	        PreparedStatement ps = cn.prepareStatement(sql);
+	        ResultSet rs = ps.executeQuery();
+        
+        while (rs.next()) {
+            count = rs.getInt(1);
+        }
+        } catch(SQLException e) {
+        	e.getMessage();
+        }
+        return count;  
+    }
+	
+	 
 }

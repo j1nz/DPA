@@ -1,5 +1,7 @@
 package internship.fpt.dpa.model.bean;
 
+import java.util.Date;
+
 public class Pet {
 	private int petID;
 	private String petName;
@@ -10,9 +12,8 @@ public class Pet {
 	private int status;
 	private int donateID;
 	private String username;
-	private int dayReceived;
-	private int monthReceived;
-	private int yearReceived;
+	private Date dateReceived;
+
 	private String avatar;
 	
 	/**
@@ -123,41 +124,18 @@ public class Pet {
 	public void setUsername(String username) {
 		this.username = username;
 	}
+	
 	/**
-	 * @return the dayReceived
+	 * @return the dateReceived
 	 */
-	public int getDayReceived() {
-		return dayReceived;
+	public Date getDateReceived() {
+		return dateReceived;
 	}
 	/**
-	 * @param dayReceived the dayReceived to set
+	 * @param dateReceived the dateReceived to set
 	 */
-	public void setDayReceived(int dayReceived) {
-		this.dayReceived = dayReceived;
-	}
-	/**
-	 * @return the monthReceived
-	 */
-	public int getMonthReceived() {
-		return monthReceived;
-	}
-	/**
-	 * @param monthReceived the monthReceived to set
-	 */
-	public void setMonthReceived(int monthReceived) {
-		this.monthReceived = monthReceived;
-	}
-	/**
-	 * @return the yearReceived
-	 */
-	public int getYearReceived() {
-		return yearReceived;
-	}
-	/**
-	 * @param yearReceived the yearReceived to set
-	 */
-	public void setYearReceived(int yearReceived) {
-		this.yearReceived = yearReceived;
+	public void setDateReceived(Date dateReceived) {
+		this.dateReceived = dateReceived;
 	}
 	/**
 	 * @return the avatar

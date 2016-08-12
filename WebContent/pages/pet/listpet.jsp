@@ -2,73 +2,66 @@
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
 <jsp:include page="/views/shared/_header.jsp"></jsp:include>
-<body>
-	<div id="main">
-		
-		<div id="left">
-			
+
+<body style="padding-top: 70px;">
+	<div class="container">
+	<div class="row">
+		<div class="col-xs-3 col-md-2">
+			<jsp:include page="/views/shared/_menu-left-admin.jsp"></jsp:include>
 		</div>
-		<div id="content">
-			Danh Sach Thu Cung
+		<div class="col-xs-9 col-md-10">
+			<h2 style="color: red">Danh Sach Thu Cung</h2>
 			
-			<%
-				List<Pet> list = (List) request.getAttribute("listPet");%>
-				
-				<table border="1">
-					<tr>
-						<th>ID</th>
-						<th>Tên</th>
+			<%List<Pet> list = (List) request.getAttribute("listPet");%>
+			
+			<a href="ShowAddPet" class="btn btn-danger navbar-btn">Add</a>
+			<div class="table-responsive">
+				<table class="table table-hover">
+		            <thead>
+		            <tr>
+		                <th>#</th>
+						<th>Name</th>
 						<th>Avatar</th>
-						<th>Tuổi</th>
-						<th>Giống Loại</th>
+						<th>Age</th>
+						<th>Type</th>
 						<th>NickName</th>
-						<th>Sức Khỏe</th>
-						<th>Trạng Thái</th>
-						<th>Donate ID</th>
-						<th>Người Nhận Nuôi</th>
-						<th>Ngày Donate</th>
-						<th>Tháng Donate</th>
-						<th>Năm Donate</th>
+						<th>Health</th>
+						<th>Status</th>
+						<th>DonateID</th>
+						<th>Adoption</th>
+						<th>Date Donate</th>
 						
-						<th colspan="3">Tùy chỉnh</th>
-					</tr>
-				<%
-				
-				for(Pet p : list){						
-				%>
-					<tr>
-						<td><%=p.getPetID() %></td>
-						<td><%=p.getPetName() %></td>
-						<td><img width="50px" src="<%=p.getAvatar()%>" alt="<%=p.getPetName() %>"></td>
-						<td><%=p.getAge() %></td>
-						<td><%=p.getPetTypeID()%></td>
-						<td><%=p.getNickname()%></td>
-						<td><%=p.getHealthID()%></td>
-						<td><%=p.getUsername()%></td>
-						<td><%=p.getDonateID()%></td>
-						<td><%=p.getDayReceived()%></td>
-						<td><%=p.getMonthReceived()%></td>
-						<td><%=p.getYearReceived()%></td>
-						<td><a href="" target="_blank">Sửa</a></td>
-						<td><a href="">Xóa</a></td>
-					</tr>
-				<%
-				}%>
-					
 						
-					
-				</table>
-				<a href="ShowAddPet" class="btn btn-danger navbar-btn">Add</a>
+						<th colspan="2">Option</th>
+		            </tr>
+		            </thead>
+		            <tbody>
+			            <%for(Pet p : list){%>
+						<tr>
+							<td><%=p.getPetID() %></td>
+							<td><%=p.getPetName() %></td>
+							<td><img width="50px" src="<%=p.getAvatar()%>" alt=""></td>
+							<td><%=p.getAge() %></td>
+							<td><%=p.getPetTypeID()%></td>
+							<td><%=p.getNickname()%></td>
+							<td><%=p.getHealthID()%></td>
+							<td><%=p.getStatus()%></td>
+							<td><%=p.getDonateID()%></td>
+							<td><%=p.getUsername() %></td>
+							<td><%=p.getDateReceived()%></td>
+							
+							<td><a href="" target="_blank"><span class="glyphicon glyphicon-edit"></span></a></td>
+							<td><a href=""><span class="glyphicon glyphicon-trash"></span></a></td>
+						</tr>
+						<%}%>
+		            </tbody>
+		        </table>	
+			</div>
 			
 		</div>
-		<div id="right">
-			
-		</div>
-		
-	
-</body>
-	<div id="footer">
-		<jsp:include page="/views/shared/_footer.jsp"></jsp:include>
+
 	</div>
-</div>
+</body>
+<jsp:include page="/views/shared/_footer.jsp"></jsp:include>
