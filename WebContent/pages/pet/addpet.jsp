@@ -17,7 +17,7 @@
 			<h2 style="color: red">Add Pets</h2>
 
 			
-			<form class="form-horizontal" role="form" action="AddPetServlet" enctype="multipart/form-data">
+			<form class="form-horizontal" action="AddPetServlet" enctype="multipart/form-data"method="POST">
 				
 				<!-- Pet Name -->
 				<div class="form-group">
@@ -94,7 +94,7 @@
 						  <input class="form-control" type="file" name="avatar">
 			      	</div>
 			    </div>
-
+				
 				<!-- Button -->
 				<div class="form-group">
 					<label class="col-md-2 control-label"></label>

@@ -42,13 +42,6 @@
 					<%} %>
 				</div>
 			</div>
-			<%
-			for (pages = 1; pages <= limit; pages++) {
-				start = (pages - 1) * 9;
-				end = pages * 9;
-			if (end > l.size()) {
-				end = l.size();
-			} %>
 			
 			<div class="row text-center">
 	    		<div class="col-lg-12">
@@ -56,14 +49,21 @@
 						<li>
                             <a href="#"  onclick="history.go(-1);">&laquo;</a>
                         </li>
-							<li>
-								<a href="Home?start=<%=start%>&end=<%=end%>" class="active"><%=pages %></a>
-							</li>
-						<% } %>
-						
+			<%
+			for (pages = 1; pages <= limit; pages++) {
+				start = (pages - 1) * 9;
+				end = pages * 9;
+			if (end > l.size()) {
+				end = l.size();
+			} %>
 						<li>
-                            <a href="#">&raquo;</a>
-                        </li>
+							<a href="Home?start=<%=start%>&end=<%=end%>" class="active"><%=pages %></a>
+						</li>
+			<% } %>
+					
+						<li>
+                           <a href="#">&raquo;</a>
+                       </li>
 					</ul>
 				</div>
 			</div>
