@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="../css/bootstrap.min.css">
+	<link rel="stylesheet" href="../css/font-awesome.css">
+	<script src="../js/jquery.min.js"></script>
+
+	<style>
+		/* list product*/
+		.glyphicon { margin-right:5px; }
+		.thumbnail
+		{
+		    margin-bottom: 20px;
+		    padding: 0px;
+		    -webkit-border-radius: 0px;
+		    -moz-border-radius: 0px;
+		    border-radius: 0px;
+		}
+
+		.item.list-group-item
+		{
+		    float: none;
+		    width: 100%;
+		    background-color: #fff;
+		    margin-bottom: 10px;
+		}
+		.item.list-group-item:nth-of-type(odd):hover,.item.list-group-item:hover
+		{
+		    background: #428bca;
+		}
+
+		.item.list-group-item .list-group-image
+		{
+		    margin-right: 10px;
+		}
+		.item.list-group-item .thumbnail
+		{
+		    margin-bottom: 0px;
+		}
+		.item.list-group-item .caption
+		{
+		    padding: 9px 9px 0px 9px;
+		}
+		.item.list-group-item:nth-of-type(odd)
+		{
+		    background: #eeeeee;
+		}
+
+		.item.list-group-item:before, .item.list-group-item:after
+		{
+		    display: table;
+		    content: " ";
+		}
+
+		.item.list-group-item img
+		{
+		    float: left;
+		}
+		.item.list-group-item:after
+		{
+		    clear: both;
+		}
+		.list-group-item-text
+		{
+		    margin: 0 0 11px;
+		}
+		/* end list product */
+
+		/* css slider */
+		.carousel-inner .itemSlider{
+		    background: #a7cfdf; /* Old browsers */
+		    background: -moz-linear-gradient(top,  #a7cfdf 0%, #23538a 100%); /* FF3.6-15 */
+		    background: -webkit-linear-gradient(top,  #a7cfdf 0%,#23538a 100%); /* Chrome10-25,Safari5.1-6 */
+		    background: linear-gradient(to bottom,  #a7cfdf 0%,#23538a 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+		    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a7cfdf', endColorstr='#23538a',GradientType=0 ); /* IE6-9 */
+		    text-align: center;
+		    height: 300px;/*change as your needs*/
+		}
+		.control-buttons{
+		    text-align:center;
+		}
+		.transition-timer-carousel-progress-bar {
+		    height: 3px;
+		    background-color: #5cb85c;/*progress bar color*/
+		    width: 0;
+		    margin: 0 0 0 0;
+		    border: none;
+		    z-index: 11;
+		    position: relative;
+		}
+		.carousel-control{
+	    	z-index: 11;
+		}
+
+		/* end css slider */
+
+		/* css search */
+		.search{
+		  position: relative;
+		  left: 0%;
+		  width: 100%;
+		  height: 30px;
+		}
+
+		.search svg{
+		  position: absolute;
+		  top: 2px;
+		  right: 1px;
+		}
+
+		.search input{
+		  width: 100%;
+		  height: 100%;
+		  background: rgba(255,255,255,0.9);
+		  border: 0px solid #fff;
+		  border-radius: 3px;
+		  color: #333;
+		  font-size: 20px;
+		  font-family: Arial;
+		  font-weight: bold;
+		  padding: 5px;
+		  padding-left: 14px;
+		}
+
+		.search input:focus{
+		  outline: none;
+		  box-shadow: 0 0 100px rgba(137,187,32,0.9);
+		}
+
+		/* end css search */
+
+		
+	</style>
+
+	<!-- Navigation -->
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+	    <div class="container">
+	        <!-- Nav -->
+	        <div class="navbar-header">
+	            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#menu">
+	                <span class="sr-only">Toggle navigation</span>
+	                <span class="icon-bar"></span>
+	                <span class="icon-bar"></span>
+	                <span class="icon-bar"></span>
+	            </button>
+	            <a class="navbar-brand" href="Welcome">DPA</a>
+	        </div>
+	        <!-- Nav collapse -->
+	        <div class="collapse navbar-collapse" id="menu">
+	           <ul class="nav navbar-nav">
+					<li><a href="Home">Home</a></li>
+					<li class="dropdown active"><a href="#" class="dropdown-toggle"
+						data-toggle="dropdown">Product<b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<li><a href="#">Food</a></li>
+							<li><a href="#">Shampoo</a></li>
+							<li class="divider"></li>
+							<li><a href="#">All Product</a></li>
+						</ul>
+					</li>
+					<li><a href="#">Health Care</a></li>
+					<li><a href="#">Donate Pet</a></li>
+					<li><a href="Contact">Contact</a></li>
+					<li><a href="About">About us</a></li>
+				</ul>
+				<ul class="nav navbar-nav navbar-right" style="margin-right:10px">
+					
+	                	
+	            	
+	            		<button class="btn btn-danger navbar-btn">Register</button>
+	                	<a href="ShowLoginServlet" class="btn btn-info navbar-btn>Login">Login</a>
+	            	
+				</ul>
+	 
+	        </div>
+	        <!-- /.navbar-collapse -->
+	    </div>
+	    <!-- /.container -->
+	</nav>
+	<!-- /Navigation -->
+	
+</head>
+<!-- Latest compiled and minified JavaScript -->
+<script src="../js/bootstrap.min.js"></script>
+<body style="padding-top:70px">
+
+
+	<!-- container -->
+	<div class="container">
+
+		<!-- row slider -->
+		<div class="row">
+			<!-- slider -->
+			<div class="col-lg-12 col-xs-12">
+				<div id="myCarousel" class="carousel slide myCarousel" data-interval="false" data-ride="carousel">
+				  	<ol class="carousel-indicators">
+				    	<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+				    	<li data-target="#myCarousel" data-slide-to="1"></li>
+				    	<li data-target="#myCarousel" data-slide-to="2"></li>
+				    	<li data-target="#myCarousel" data-slide-to="3"></li>
+				    	<li data-target="#myCarousel" data-slide-to="4"></li>
+				  	</ol> 
+				  	<!-- Carousel items -->
+				  	<div class="carousel-inner">
+				    	<div class="active item">
+					      <!--put img inside itens like this-->
+					      <img src="../images/pet/pet_banner.jpg" alt="...">
+				        	<div class="container">
+						    	<div class="carousel-caption">
+							        <h3>First slide label</h3>
+							        <p>It's Responsive and Pauses on hover</p>
+						        </div>
+						    </div>
+						</div>
+					    <div class="item">
+					    	<img src="../images/pet/cho_banner.png" alt="...">
+					        <div class="container">
+						        <div class="carousel-caption">
+							        <h3>Second slide label</h3>
+							        <p>If you use controls, progress bar will change too.</p>
+						        </div>
+					        </div>
+					    </div>
+					    <div class="item">
+					    	<img src="../images/pet/meo_banner.jpg" alt="...">
+					        <div class="container">
+						        <div class="carousel-caption">
+							        <h3>Third slide label</h3>
+							        <p>Bug fixed</p>
+						        </div>
+					        </div>
+					    </div>
+					    
+					    <div class="item">
+					    	<img src="../images/pet/vet_banner.jpg" alt="...">
+					        <div class="container">
+						        <div class="carousel-caption">
+							        <h3>Third slide label</h3>
+							        <p>Bug fixed</p>
+						        </div>
+					        </div>
+					    </div>
+					    <div class="item">
+					    	<img src="../images/pet/vet_meo_banner.jpg" alt="...">
+					        <div class="container">
+						        <div class="carousel-caption">
+							        <h3>Third slide label</h3>
+							        <p>Bug fixed</p>
+						        </div>
+					        </div>
+					    </div>
+
+				  	</div>
+				  	<hr class="transition-timer-carousel-progress-bar" />
+				  	<a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+				    	<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+				    	<span class="sr-only">Previous</span>
+				  	</a>
+				  	<a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+				    	<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+				    	<span class="sr-only">Next</span>
+				  	</a>
+				</div>
+			</div>
+			<!-- end slider -->
+		</div>
+		<!-- end row slider -->
+
+		<!-- row content -->
+		<div class="row">
+
+			<div class="col-lg-12">
+				
+				<div class="col-lg-12 col-xs-12 col-md-12 well well-sm">
+					<div class="col-lg-9">
+						<div class="col-lg-3 col-md-3 hidden-sm hidden-xs">
+							
+						</div>
+
+						
+						<div class="col-lg-3 col-lg-offset-6 col-md-3 col-xs-12 col-md-offset-6" style="margin-left:90%">
+
+					        <div class="btn-group hidden-xs ">
+					            <a href="#" id="list" class="btn btn-default btn-sm">
+					            	<span class="glyphicon glyphicon-th-list"></span>
+					            	
+					            </a>
+					            <a href="#" id="grid" class="btn btn-default btn-sm">
+						            <span class="glyphicon glyphicon-th"></span>
+						            
+					            </a>
+					        </div>
+						</div>
+				        
+					</div>
+					
+					<div class="col-lg-3 col-md-3">
+
+							
+						<div class="search hidden-xs hidden-sm">
+						  	<input type="text" placeholder="Search Spotify">
+						    <svg enable-background="new 0 0 512 512" height="25px" id="Layer_1" version="1.1" viewBox="0 0 512 512" width="25px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path fill="#a9a9a9" d="M497.913,497.913c-18.782,18.782-49.225,18.782-68.008,0l-84.862-84.863c-34.889,22.382-76.13,35.717-120.659,35.717  C100.469,448.767,0,348.312,0,224.383S100.469,0,224.384,0c123.931,0,224.384,100.452,224.384,224.383  c0,44.514-13.352,85.771-35.718,120.676l84.863,84.863C516.695,448.704,516.695,479.131,497.913,497.913z M224.384,64.109  c-88.511,0-160.274,71.747-160.274,160.273c0,88.526,71.764,160.274,160.274,160.274c88.525,0,160.273-71.748,160.273-160.274  C384.657,135.856,312.909,64.109,224.384,64.109z"/></svg>
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+			<div class="row">
+
+				<div class="col-lg-12 col-md-12">
+					<!-- list product -->
+					<div class="col-lg-9">
+						
+					    <div id="products" class="row list-group">
+					        <div class="item  col-xs-12 col-md-3 col-lg-3">
+					            <div class="thumbnail">
+					                <img class="group list-group-image" width="300px" src="../images/pet/meo.jpg" alt="" />
+					                <div class="caption">
+					                    <h4 class="group inner list-group-item-heading">
+					                        Product title</h4>
+					                    <p class="group inner list-group-item-text">
+					                        Product description... Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
+					                        sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
+					                    <div class="row">
+					                        <div class="col-xs-12 col-md-6">
+					                            <p class="lead">$21.000</p>
+					                        </div>
+					                        <div class="col-xs-12 col-md-6">
+					                            <a class="btn btn-success" href="http://www.jquery2dotnet.com">Buy</a>
+					                        </div>
+					                    </div>
+					                </div>
+					            </div>
+					        </div>
+					        <div class="item  col-xs-12 col-md-3 col-lg-3">
+					            <div class="thumbnail">
+					                <img class="group list-group-image" width="300px" src="../images/pet/meo.jpg" alt="" />
+					                <div class="caption">
+					                    <h4 class="group inner list-group-item-heading">
+					                        Product title</h4>
+					                    <p class="group inner list-group-item-text">
+					                        Product description... Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
+					                        sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
+					                    <div class="row">
+					                    	<div class="col-xs-12 col-md-6">
+					                            <p class="lead">$21.000</p>
+					                        </div>
+				                        	<div class="col-xs-12 col-md-6">
+				                            	<a class="btn btn-success" href="http://www.jquery2dotnet.com">Buy</a>
+				                        	</div>
+					                    </div>
+					                </div>
+					            </div>
+					        </div>
+					        <div class="item  col-xs-12 col-md-3 col-lg-3">
+					            <div class="thumbnail">
+					                <img class="group list-group-image" width="300px" src="../images/pet/meo.jpg" alt="" />
+					                <div class="caption">
+					                    <h4 class="group inner list-group-item-heading">
+					                        Product title</h4>
+					                    <p class="group inner list-group-item-text">
+					                        Product description... Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
+					                        sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
+					                    <div class="row">
+					                        <div class="col-xs-12 col-md-6">
+					                            <p class="lead">$21.000</p>
+					                        </div>
+					                        <div class="col-xs-12 col-md-6">
+					                            <a class="btn btn-success" href="http://www.jquery2dotnet.com">Buy</a>
+					                        </div>
+					                    </div>
+					                </div>
+					            </div>
+					        </div>
+					        <div class="item  col-xs-12 col-md-3 col-lg-3">
+					            <div class="thumbnail">
+					                <img class="group list-group-image" width="300px" src="../images/pet/meo.jpg" alt="" />
+					                <div class="caption">
+					                    <h4 class="group inner list-group-item-heading">
+					                        Product title</h4>
+					                    <p class="group inner list-group-item-text">
+					                        Product description... Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
+					                        sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
+					                    <div class="row">
+					                        <div class="col-xs-12 col-md-6">
+					                            <p class="lead">$21.000</p>
+					                        </div>
+					                        <div class="col-xs-12 col-md-6">
+					                            <a class="btn btn-success" href="http://www.jquery2dotnet.com">Buy</a>
+					                        </div>
+					                    </div>
+					                </div>
+					            </div>
+					        </div>
+					        <div class="item  col-xs-12 col-md-3 col-lg-3">
+					            <div class="thumbnail">
+					                <img class="group list-group-image" width="300px" src="../images/pet/meo.jpg" alt="" />
+					                <div class="caption">
+					                    <h4 class="group inner list-group-item-heading">
+					                        Product title</h4>
+					                    <p class="group inner list-group-item-text">
+					                        Product description... Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
+					                        sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
+					                    <div class="row">
+					                    	<div class="col-xs-12 col-md-6">
+					                            <p class="lead">$21.000</p>
+					                        </div>
+					                        <div class="col-xs-12 col-md-6">
+					                            <a class="btn btn-success" href="http://www.jquery2dotnet.com">Buy</a>
+					                        </div>
+					                    </div>
+					                </div>
+					            </div>
+					        </div>
+					        <div class="item  col-xs-12 col-md-3 col-lg-3">
+					            <div class="thumbnail">
+					                <img class="group list-group-image" width="300px" src="../images/pet/meo.jpg" alt="" />
+					                <div class="caption">
+					                    <h4 class="group inner list-group-item-heading">
+					                        Product title</h4>
+					                    <p class="group inner list-group-item-text">
+					                        Product description... Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
+					                        sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
+					                    <div class="row">
+											<div class="col-xs-12 col-md-6">
+					                            <p class="lead">$21.000</p>
+					                        </div>
+					                        <div class="col-xs-12 col-md-6">
+					                            <a class="btn btn-success" href="http://www.jquery2dotnet.com">Buy</a>
+					                        </div>
+					                    </div>
+					                </div>
+					            </div>
+					        </div>
+					    </div>
+					</div>
+			    	<!-- end list product -->
+
+			    	<!-- right menu -->
+					<div class="col-lg-3 col-md-3 hidden-xs hidden-sm">
+						
+						<div class="row">
+							<div class="col-lg-12">
+								<div class="panel panel-default">
+							        <div class="panel-heading">
+							            <strong>Basic Tabs</strong>
+							        </div>
+							        <!-- /.panel-heading -->
+							        <div class="panel-body">
+							            <!-- Nav tabs -->
+							            <ul class="nav nav-tabs">
+							                <li class="active"><a href="#home" data-toggle="tab">Home</a>
+							                </li>
+							                <li><a class="active" href="#profile" data-toggle="tab">Profile</a>
+							                </li>
+							                <li><a class="active" href="#messages" data-toggle="tab">Mess</a>
+							                </li>
+							                
+							            </ul>
+
+							            <!-- Tab panes -->
+							            <div class="tab-content">
+							                <div class="tab-pane fade in active" id="home">
+							                    <h4>Home Tab</h4>
+							                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+							                </div>
+							                <div class="tab-pane fade" id="profile">
+							                    <h4>Profile Tab</h4>
+							                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+							                </div>
+							                <div class="tab-pane fade" id="messages">
+							                    <h4>Messages Tab</h4>
+							                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+							                </div>
+							               
+							            </div>
+							        </div>
+							    </div>
+							</div>
+						</div>
+					</div>
+					<!-- end right menu -->
+				</div>
+				
+			</div>
+
+			
+
+		</div>
+		<!-- end row content -->
+	</div>
+	<!-- container -->
+</body>
+
+<div class="container">
+	<button onclick="showFooter();" id="downbutton" class="center-block" type="button">
+		<i class="fa fa-chevron-circle-down fa-2x" aria-hidden="true"></i>
+	</button>
+	<div id="divcontact" class="row">
+		<div><h3>CONTACT</h3></div>  
+		<div class="well">
+			<form id="formcontact" method="post">
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="titlecontact">Title</label> <input type="text"
+								class="form-control" id="title" name="title" placeholder="Title" />
+						</div>
+						<div class="form-group">
+							<label for="email">Email Address</label>
+							<div class="input-group">
+								<span class="input-group-addon"><span
+									class="glyphicon glyphicon-envelope"></span></span> <input
+									type="email" class="form-control" id="email" name="email"
+									placeholder="Enter email" />
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="name">Your Name</label> <input type="text"
+								class="form-control" name="yourname" id="yourname"
+								placeholder="Your Name" />
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="name">Message</label>
+							<textarea name="content" id="content" class="form-control"
+								rows="9" cols="25" placeholder="Message"></textarea>
+						</div>
+					</div>
+					<div class="col-md-12">
+						<button type="submit" class="btn btn-primary pull-right"
+							id="btnContactUs">Send Message</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+	<button onclick="hideFooter()" id="upbutton" class="center-block" type="button">
+		<i class="fa fa-chevron-circle-up fa-2x" aria-hidden="true"></i>
+	</button>
+</div>
+
+
+
+<script type="text/javascript">
+	
+	$("#divcontact").hide();
+	$("#upbutton").hide();
+	$("#back-to-top").hide();
+
+	function showFooter() {
+		$("#divcontact").show();
+		$("#downbutton").hide();
+		$("#upbutton").show();
+		$("html, body").animate({
+			scrollTop : $(document).height()
+		}, 500);
+	}
+
+	function hideFooter() {
+		$("#divcontact").hide();
+		$("#downbutton").show();
+		$("#upbutton").hide();
+		$("html, body").animate({
+			scrollTop : $(document).height()
+		}, 500);
+	}
+
+	
+
+	function backtotop() {
+		$("html, body").animate({
+			scrollTop : 0
+		}, 500);
+	}
+
+	$(document).ready(function() {
+		
+		$(window).on('scroll', function() {
+			if ($(this).scrollTop() > 100) {
+				$("#back-to-top").fadeIn();
+			} else {
+				$("#back-to-top").fadeOut();
+			}
+		});
+			
+		/* js hover in dropdown menu */
+		$(".dropdown").hover(
+	        function() { $('.dropdown-menu', this).fadeIn("fast");
+	        },
+	        function() { $('.dropdown-menu', this).fadeOut("fast");
+	    });
+	    /* end hover dropdown */
+
+		/* js for cách thức hiển thị trang web, theo kiểu list hay là grid*/
+	    $('#list').click(
+	    	function(event) {
+	    		event.preventDefault();
+	    		$('#products .item').addClass('list-group-item');
+	    	});
+
+	    $('#grid').click(
+	    	function(event) {
+	    		event.preventDefault();
+	    		$('#products .item').removeClass('list-group-item');
+	    		$('#products .item').addClass('grid-group-item');
+	    	});
+	    /* end js for show type list*/
+
+
+	    /* js for slider use bootstrap */
+	    var percent = 0,
+		interval = 30,//it takes about 6s, interval=20 takes about 4s
+		$bar = $('.transition-timer-carousel-progress-bar'),
+		$crsl = $('#myCarousel');
+		$('.carousel-indicators li, .carousel-control').click(function (){$bar.css({width:0.5+'%'});});
+		/*line above just for showing when controls are clicked the bar goes to 0.5% to make more friendly, 
+		if you want when clicked set bar empty, change on width:0.5 to width:0*/
+		$crsl.carousel({//initialize
+			interval: false,
+			pause: true
+		}).on('slide.bs.carousel', function (){percent = 0;});//This event fires immediately when the bootstrap slide instance method is invoked.
+		function progressBarCarousel() {
+			$bar.css({width:percent+'%'});
+			percent = percent +0.5;
+			if (percent>=100) {
+				percent=0;
+				$crsl.carousel('next');
+			}
+		}
+		var barInterval = setInterval(progressBarCarousel, interval);//set interval to progressBarCarousel function
+		if (!(/Mobi/.test(navigator.userAgent))) {//tests if it isn't mobile
+			$crsl.hover(function(){
+						clearInterval(barInterval);
+					},
+					function(){
+						barInterval = setInterval(progressBarCarousel, interval);
+					}
+			);
+		}
+
+		/* end js for slider*/
+		
+		
+		
+
+	});
+	
+
+</script>
+</html>
