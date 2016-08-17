@@ -13,7 +13,20 @@ public class Pet {
 	private int donateID;
 	private String username;
 	private Date dateReceived;
-
+	private String description;
+	
+	/**
+	 * @return the description
+	 */
+	public String getDescription() {
+		return description;
+	}
+	/**
+	 * @param description the description to set
+	 */
+	public void setDescription(String description) {
+		this.description = description;
+	}
 	private String avatar;
 	
 	/**

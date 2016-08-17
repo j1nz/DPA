@@ -1,81 +1,298 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    </body>
-<!-- <script src="js/functionDPA.js"></script> -->
-<div class="row" style="position: relative;">
-	
-	<div class="col-sm-12 col-md-12"
-		style="top: auto;z-index: 1000; display: block; overflow-x: hidden; background:rgba(247,247,247,.5); overflow-y: auto; border-right: 1px solid #eee;">
-<!-- 		<button onclick="showFooter();" id="downbutton" class="center-block" type="button"> -->
-<!-- 			<i class="fa fa-chevron-circle-dow fa-2x" aria-hidden="true"></i> -->
-<!-- 		</button> -->
-		<div id="footer" class="row">
-            <div class="col-md-9">
-                <div class="row">
-                    <div class="col-md-3 footer-nav">
-                        <h4 class="hidden-xs hidden-sm">Hỗ trợ khách hàng</h4>
-                        <ul>
-                           
-                        </ul>
-                    </div>
-                    <div class="col-md-3 footer-nav footer-account" >
-	                    <h4 class="hidden-xs hidden-sm">Tài khoản của bạn</h4>
-                        <ul>
-                           
-                        </ul>
-                    </div>
 
-                    <div class="col-md-3 footer-nav hidden-xs hidden-sm">
-                        <h4>Về DPA.ORG</h4>
-                        <ul>
-                            
-                        </ul>
-                    </div>
-
-                    <div class="col-md-3 footer-nav hidden-xs hidden-sm">
-                        <h4>Hợp tác &amp; Liên kết</h4>
-                        <ul>
-                            
-                        </ul>
-                    </div>
-
-                </div>
-            </div>
-            <div class="col-md-3">
-
-				<div class="newsletter is-up">
-					<form novalidate="" target="_blank"
-						name="mc-embedded-subscribe-form" id="mc-embedded-subscribe-form"
-						method="post" action="#">
-						<div class="row">
-							<div class="col-md-12 col-xs-12">
-								<h4 class="js-newsletter-toggle">
-									<span>Cập nhật thông tin</span>
-									<a class="toggle">
-										<i class="fa fa-angle-down"></i> <i class="fa fa-envelope-o"></i>
-									</a>
-								</h4>
+<div class="container">
+	<button onclick="showFooter();" id="downbutton" class="center-block" type="button">
+		<i class="fa fa-chevron-circle-down fa-2x" aria-hidden="true"></i>
+	</button>
+	<div id="divcontact" class="row">
+		<div><h3>CONTACT</h3></div>  
+		<div class="well">
+			<form id="formcontact" method="post">
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="titlecontact">Title</label> <input type="text"
+								class="form-control" id="title" name="title" placeholder="Title" />
+						</div>
+						<div class="form-group">
+							<label for="email">Email Address</label>
+							<div class="input-group">
+								<span class="input-group-addon"><span
+									class="glyphicon glyphicon-envelope"></span></span> <input
+									type="email" class="form-control" id="email" name="email"
+									placeholder="Enter email" />
 							</div>
 						</div>
-						<div class="row">
-							<div class="form-group">
-								<input type="email" class="form-control"
-									name="email" required="" placeholder="Your email">
-								<button type="submit" name="subscribe" id="mc-embedded-subscribe"
-									class="form-control">Đăng ký <i class="fa fa-angle-right"></i>
-								</button>
-							</div>
+						<div class="form-group">
+							<label for="name">Your Name</label> <input type="text"
+								class="form-control" name="yourname" id="yourname"
+								placeholder="Your Name" />
 						</div>
-						
-					</form>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="name">Message</label>
+							<textarea name="content" id="content" class="form-control"
+								rows="9" cols="25" placeholder="Message"></textarea>
+						</div>
+					</div>
+					<div class="col-md-12">
+						<button type="submit" class="btn btn-primary pull-right"
+							id="btnContactUs">Send Message</button>
+					</div>
 				</div>
-
-
-			</div>
-        </div>
-<!--         <button onclick="hideFooter();" id="upbutton" class="center-block"type="button"> -->
-<!-- 			<i class="fa fa-chevron-circle-up fa-2x" aria-hidden="true"></i> -->
-<!-- 		</button> -->
+			</form>
+		</div>
 	</div>
-	
+	<button onclick="hideFooter()" id="upbutton" class="center-block" type="button">
+		<i class="fa fa-chevron-circle-up fa-2x" aria-hidden="true"></i>
+	</button>
 </div>
+
+<script type="text/javascript">
+	
+	$("#divcontact").hide();
+	$("#upbutton").hide();
+	$("#back-to-top").hide();
+
+	function showFooter() {
+		$("#divcontact").show();
+		$("#downbutton").hide();
+		$("#upbutton").show();
+		$("html, body").animate({
+			scrollTop : $(document).height()
+		}, 500);
+	}
+
+	function hideFooter() {
+		$("#divcontact").hide();
+		$("#downbutton").show();
+		$("#upbutton").hide();
+		$("html, body").animate({
+			scrollTop : $(document).height()
+		}, 500);
+	}
+
+	
+
+	function backtotop() {
+		$("html, body").animate({
+			scrollTop : 0
+		}, 500);
+	}
+
+	$(document).ready(function() {
+		
+		$(window).on('scroll', function() {
+			if ($(this).scrollTop() > 100) {
+				$("#back-to-top").fadeIn();
+			} else {
+				$("#back-to-top").fadeOut();
+			}
+		});
+			
+		/* js hover in dropdown menu */
+		$(".dropdown").hover(
+	        function() { $('.dropdown-menu', this).fadeIn("fast");
+	        },
+	        function() { $('.dropdown-menu', this).fadeOut("fast");
+	    });
+	    /* end hover dropdown */
+
+		/* js for cách thức hiển thị trang web, theo kiểu list hay là grid*/
+	    $('#list').click(
+	    	function(event) {
+	    		event.preventDefault();
+	    		$('#products .item').addClass('list-group-item');
+	    	});
+
+	    $('#grid').click(
+	    	function(event) {
+	    		event.preventDefault();
+	    		$('#products .item').removeClass('list-group-item');
+	    		$('#products .item').addClass('grid-group-item');
+	    	});
+	    /* end js for show type list*/
+
+
+	    /* js for slider use bootstrap */
+	    var percent = 0,
+		interval = 30,//it takes about 6s, interval=20 takes about 4s
+		$bar = $('.transition-timer-carousel-progress-bar'),
+		$crsl = $('#myCarousel');
+		$('.carousel-indicators li, .carousel-control').click(function (){$bar.css({width:0.5+'%'});});
+		/*line above just for showing when controls are clicked the bar goes to 0.5% to make more friendly, 
+		if you want when clicked set bar empty, change on width:0.5 to width:0*/
+		$crsl.carousel({//initialize
+			interval: false,
+			pause: true
+		}).on('slide.bs.carousel', function (){percent = 0;});//This event fires immediately when the bootstrap slide instance method is invoked.
+		function progressBarCarousel() {
+			$bar.css({width:percent+'%'});
+			percent = percent +0.5;
+			if (percent>=100) {
+				percent=0;
+				$crsl.carousel('next');
+			}
+		}
+		var barInterval = setInterval(progressBarCarousel, interval);//set interval to progressBarCarousel function
+		if (!(/Mobi/.test(navigator.userAgent))) {//tests if it isn't mobile
+			$crsl.hover(function(){
+						clearInterval(barInterval);
+					},
+					function(){
+						barInterval = setInterval(progressBarCarousel, interval);
+					}
+			);
+		}
+
+		/* end js for slider*/
+		
+		var $form_modal = $('.user-modal'),
+	    $form_login = $form_modal.find('#login'),
+	    $form_signup = $form_modal.find('#signup'),
+	    $form_forgot_password = $form_modal.find('#reset-password'),
+	    $form_modal_tab = $('.switcher'),
+	    $tab_login = $form_modal_tab.children('li').eq(0).children('a'),
+	    $tab_signup = $form_modal_tab.children('li').eq(1).children('a'),
+	    $forgot_password_link = $form_login.find('.form-bottom-message a'),
+	    $back_to_login_link = $form_forgot_password.find('.form-bottom-message a'),
+	    $main_nav = $('.main-nav');
+
+	  //open modal
+	  $main_nav.on('click', function(event){
+
+	    if( $(event.target).is($main_nav) ) {
+	      // on mobile open the submenu
+	      $(this).children('ul').toggleClass('is-visible');
+	    } else {
+	      // on mobile close submenu
+	      $main_nav.children('ul').removeClass('is-visible');
+	      //show modal layer
+	      $form_modal.addClass('is-visible'); 
+	      //show the selected form
+	      ( $(event.target).is('.signup') ) ? signup_selected() : login_selected();
+	    }
+
+	  });
+
+	  //close modal
+	  $('.user-modal').on('click', function(event){
+	    if( $(event.target).is($form_modal) || $(event.target).is('.close-form') ) {
+	      $form_modal.removeClass('is-visible');
+	    } 
+	  });
+	  //close modal when clicking the esc keyboard button
+	  $(document).keyup(function(event){
+	      if(event.which=='27'){
+	        $form_modal.removeClass('is-visible');
+	      }
+	    });
+
+	  //switch from a tab to another
+	  $form_modal_tab.on('click', function(event) {
+	    event.preventDefault();
+	    ( $(event.target).is( $tab_login ) ) ? login_selected() : signup_selected();
+	  });
+
+	  //hide or show password
+	  $('.hide-password').on('click', function(){
+	    var $this= $(this),
+	      $password_field = $this.prev('input');
+	    
+	    ( 'password' == $password_field.attr('type') ) ? $password_field.attr('type', 'text') : $password_field.attr('type', 'password');
+	    ( 'Show' == $this.text() ) ? $this.text('Hide') : $this.text('Show');
+	    //focus and move cursor to the end of input field
+	    $password_field.putCursorAtEnd();
+	  });
+
+	  //show forgot-password form 
+	  $forgot_password_link.on('click', function(event){
+	    event.preventDefault();
+	    forgot_password_selected();
+	  });
+
+	  //back to login from the forgot-password form
+	  $back_to_login_link.on('click', function(event){
+	    event.preventDefault();
+	    login_selected();
+	  });
+
+	  function login_selected(){
+	    $form_login.addClass('is-selected');
+	    $form_signup.removeClass('is-selected');
+	    $form_forgot_password.removeClass('is-selected');
+	    $tab_login.addClass('selected');
+	    $tab_signup.removeClass('selected');
+	  }
+
+	  function signup_selected(){
+	    $form_login.removeClass('is-selected');
+	    $form_signup.addClass('is-selected');
+	    $form_forgot_password.removeClass('is-selected');
+	    $tab_login.removeClass('selected');
+	    $tab_signup.addClass('selected');
+	  }
+
+	  function forgot_password_selected(){
+	    $form_login.removeClass('is-selected');
+	    $form_signup.removeClass('is-selected');
+	    $form_forgot_password.addClass('is-selected');
+	  }
+
+	  //REMOVE THIS - it's just to show error messages 
+	  $form_login.find('input[type="submit"]').on('click', function(event){
+	    event.preventDefault();
+	    $form_login.find('input[type="email"]').toggleClass('has-error').next('span').toggleClass('is-visible');
+	  });
+	  $form_signup.find('input[type="submit"]').on('click', function(event){
+	    event.preventDefault();
+	    $form_signup.find('input[type="email"]').toggleClass('has-error').next('span').toggleClass('is-visible');
+	  });
+
+
+	  //IE9 placeholder fallback
+	  //credits http://www.hagenburger.net/BLOG/HTML5-Input-Placeholder-Fix-With-jQuery.html
+	  if(!Modernizr.input.placeholder){
+	    $('[placeholder]').focus(function() {
+	      var input = $(this);
+	      if (input.val() == input.attr('placeholder')) {
+	        input.val('');
+	        }
+	    }).blur(function() {
+	      var input = $(this);
+	        if (input.val() == '' || input.val() == input.attr('placeholder')) {
+	        input.val(input.attr('placeholder'));
+	        }
+	    }).blur();
+	    $('[placeholder]').parents('form').submit(function() {
+	        $(this).find('[placeholder]').each(function() {
+	        var input = $(this);
+	        if (input.val() == input.attr('placeholder')) {
+	          input.val('');
+	        }
+	        })
+	    });
+	  }
+		
+
+	});
+	jQuery.fn.putCursorAtEnd = function() {
+		  return this.each(function() {
+		      // If this function exists...
+		      if (this.setSelectionRange) {
+		          // ... then use it (Doesn't work in IE)
+		          // Double the length because Opera is inconsistent about whether a carriage return is one character or two. Sigh.
+		          var len = $(this).val().length * 2;
+		          this.setSelectionRange(len, len);
+		      } else {
+		        // ... otherwise replace the contents with itself
+		        // (Doesn't work in Google Chrome)
+		          $(this).val($(this).val());
+		      }
+		  });
+		};
+
+</script>
+</html>

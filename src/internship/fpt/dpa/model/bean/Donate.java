@@ -1,11 +1,12 @@
 package internship.fpt.dpa.model.bean;
 
+import java.util.Date;
+
 public class Donate {
 	private int donateID;
 	private String username;
-	private int dayDonate;
-	private int monthDonate;
-	private int yearDonate;
+	private Date dateDonate;
+	
 	private int quantity;
 	private String note;
 	
@@ -33,41 +34,18 @@ public class Donate {
 	public void setUsername(String username) {
 		this.username = username;
 	}
+
 	/**
-	 * @return the dayDonate
+	 * @return the dateDonate
 	 */
-	public int getDayDonate() {
-		return dayDonate;
+	public Date getDateDonate() {
+		return dateDonate;
 	}
 	/**
-	 * @param dayDonate the dayDonate to set
+	 * @param dateDonate the dateDonate to set
 	 */
-	public void setDayDonate(int dayDonate) {
-		this.dayDonate = dayDonate;
-	}
-	/**
-	 * @return the monthDonate
-	 */
-	public int getMonthDonate() {
-		return monthDonate;
-	}
-	/**
-	 * @param monthDonate the monthDonate to set
-	 */
-	public void setMonthDonate(int monthDonate) {
-		this.monthDonate = monthDonate;
-	}
-	/**
-	 * @return the yearDonate
-	 */
-	public int getYearDonate() {
-		return yearDonate;
-	}
-	/**
-	 * @param yearDonate the yearDonate to set
-	 */
-	public void setYearDonate(int yearDonate) {
-		this.yearDonate = yearDonate;
+	public void setDateDonate(Date dateDonate) {
+		this.dateDonate = dateDonate;
 	}
 	/**
 	 * @return the quantity

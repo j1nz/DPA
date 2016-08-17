@@ -60,6 +60,34 @@ public class PetBO {
 		return list;
 	}
 	
+	/**
+	 * get cac loai thu nuoi
+	 * @param id
+	 * @return
+	 */
+	public PetType getPetTypeById(int id) {
+		PetType pt = new PetType();
+		PetTypeDAO ptdao = PetTypeDAO.getInstance();
+		
+		pt = ptdao.getPetTypeById(id);
+		
+		return pt;
+	}
+	
+	/**
+	 * Get pet by ID xem chi tiet con thu
+	 * @param id
+	 * @return
+	 */
+	public Pet getPetById(int id) {
+		Pet p = new Pet();
+		PetDAO ptdao = PetDAO.getInstance();
+		p = ptdao.getPetById(id);
+		
+		return p;
+	}
+	
+	
 	public int countAllPet(){
 		PetDAO p = PetDAO.getInstance();
 		

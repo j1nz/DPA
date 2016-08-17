@@ -55,8 +55,8 @@ public class PetDAO {
 				p.setDonateID(rs.getInt("donateID"));
 				p.setUsername(rs.getString("username"));
 				p.setDateReceived(rs.getDate("dateReceived"));
-				
 				p.setAvatar(rs.getString("avatar"));
+				p.setDescription(rs.getString("description"));
 				
 				lPet.add(p);
 			}
@@ -71,35 +71,23 @@ public class PetDAO {
 
 	/**
 	 * Them thu vao database
-	 * [petName]
-      ,[age]
-      ,[petTypeID]
-      ,[nickname]
-      ,[healthID]
-      ,[status]
-      ,[donateID]
-      ,[username]
-      ,[dayReceived]
-      ,[monthReceived]
-      ,[yearReceived]
-      ,[avatar]
 	 * @param Pet p
 	 */
 	public void addPet(Pet p) {
 		String sql = "INSERT INTO Pet VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		try {
 			pstm = cn.prepareStatement(sql);
-			pstm.setInt(1, 100);
-			pstm.setString(2, p.getPetName());
-			pstm.setInt(3, p.getAge());
-			pstm.setInt(4, p.getPetTypeID());
-			pstm.setString(5, p.getNickname());
-			pstm.setInt(6, p.getHealthID());
-			pstm.setInt(7, p.getStatus());
-			pstm.setInt(8, p.getDonateID());
-			pstm.setString(9, p.getUsername());
-			pstm.setDate(10, (Date) p.getDateReceived());
-			pstm.setString(11, p.getAvatar());
+			pstm.setString(1, p.getPetName());
+			pstm.setInt(2, p.getAge());
+			pstm.setInt(3, p.getPetTypeID());
+			pstm.setString(4, p.getNickname());
+			pstm.setInt(5, p.getHealthID());
+			pstm.setInt(6, p.getStatus());
+			pstm.setInt(7, p.getDonateID());
+			pstm.setString(8, p.getUsername());
+			pstm.setDate(9, (Date) p.getDateReceived());
+			pstm.setString(10, p.getAvatar());
+			pstm.setString(11, p.getDescription());
 			
 			pstm.executeUpdate();
 			
@@ -129,6 +117,57 @@ public class PetDAO {
         }
         return count;  
     }
+
+	/**
+	 * 
+	 * [petName]
+      ,[age]
+      ,[petTypeID]
+      ,[nickname]
+      ,[healthID]
+      ,[status]
+      ,[donateID]
+      ,[username]
+      ,[dateReceived]
+      ,[avatar]
+      ,[description]
+	 * @param id
+	 * @return
+	 */
+	public Pet getPetById(int id) {
+		Pet p = new Pet();
+		
+		String sql = SQLCommand.SelectRowWithWHERE("*", "Pet", "petID = ?");
+		
+		try {
+			pstm = cn.prepareStatement(sql);
+			pstm.setInt(1, id);
+			rs = pstm.executeQuery();
+			
+			while(rs.next()) {
+				p.setPetID(rs.getInt("petID"));
+				p.setPetName(rs.getString("petName"));
+				p.setAge(rs.getInt("age"));
+				p.setPetTypeID(rs.getInt("petTypeID"));
+				p.setNickname(rs.getString("nickname"));
+				p.setHealthID(rs.getInt("healthID"));
+				p.setStatus(rs.getInt("status"));
+				p.setDonateID(rs.getInt("donateID"));
+				p.setUsername(rs.getString("username"));
+				p.setDateReceived(rs.getDate("dateReceived"));
+				p.setAvatar(rs.getString("avatar"));
+				p.setDescription(rs.getString("description"));
+
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		return p;
+	}
 	
 	 
 }

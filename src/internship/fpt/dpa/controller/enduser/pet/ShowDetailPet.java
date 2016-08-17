@@ -1,8 +1,6 @@
-package internship.fpt.dpa.controller.management.pet;
+package internship.fpt.dpa.controller.enduser.pet;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,22 +8,25 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
+import internship.fpt.dpa.model.bean.Health;
+import internship.fpt.dpa.model.bean.Pet;
 import internship.fpt.dpa.model.bean.PetType;
 import internship.fpt.dpa.model.bo.PetBO;
+import internship.fpt.dpa.model.dao.HealthDAO;
+import internship.fpt.dpa.model.dao.PetTypeDAO;
 
 /**
- * Servlet implementation class ShowAddPet
+ * Servlet implementation class ShowDetailPet
  */
-@WebServlet("/ShowAddPet")
-public class ShowAddPet extends HttpServlet {
+@WebServlet("/ShowDetailPet")
+public class ShowDetailPet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ShowAddPet() {
+    public ShowDetailPet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -34,23 +35,27 @@ public class ShowAddPet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		HttpSession session = request.getSession(true);
+		// TODO Auto-generated method stub
+		String id = request.getParameter("id");
+		Pet p = new Pet();
+		PetType pt = new PetType();
+		Health h = new Health();
 		
-		if(session.isNew()) {
-			RequestDispatcher view = request.getRequestDispatcher("pages/home/login.jsp");
-			view.forward(request, response);
-		} else if("admin".equals(session.getAttribute("role"))){
-			
-			PetBO pbo = PetBO.getInstance();
-			request.setAttribute("typePet", pbo.petType());
-			request.setAttribute("health", pbo.getHealth());
-			
-			RequestDispatcher view = request.getRequestDispatcher("pages/pet/addpet.jsp");
-			view.forward(request, response);
-		} else {
-			RequestDispatcher view = request.getRequestDispatcher("pages/home/login.jsp");
-			view.forward(request, response);
-		}
+		PetBO pbo = PetBO.getInstance();
+		PetTypeDAO ptdao = PetTypeDAO.getInstance();
+		HealthDAO hdao = HealthDAO.getInstance();
+		
+		p = pbo.getPetById(Integer.parseInt(id));
+		pt = ptdao.getPetTypeById(p.getPetTypeID());
+		h = hdao.getHealthById(p.getHealthID());
+		
+		request.setAttribute("Pet", p);
+		request.setAttribute("Health", h);
+		request.setAttribute("PetType", pt);
+		
+		RequestDispatcher view = request.getRequestDispatcher("pages/pet/detail.jsp");
+		view.forward(request, response);
+		
 	}
 
 	/**

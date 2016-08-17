@@ -57,4 +57,29 @@ public class HealthDAO {
 		
 		return list;
 	}
+	
+	/**
+	 * 
+	 * @param id
+	 * @return
+	 */
+	public Health getHealthById(int id) {
+		Health h = new Health();
+		String sql = SQLCommand.SelectRowWithWHERE("*", "Health", "healthID = ?");
+		
+		try {
+			pstm = cn.prepareStatement(sql);
+			pstm.setInt(1, id);
+			rs = pstm.executeQuery();
+			while(rs.next()) {
+				h.setHealthID(rs.getInt("healthID"));
+				h.setHealthName(rs.getString("healthName"));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return h;
+	}
 }

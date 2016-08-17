@@ -17,7 +17,7 @@
 			<h2 style="color: red">Add Pets</h2>
 
 			
-			<form class="form-horizontal" action="AddPetServlet" enctype="multipart/form-data"method="POST">
+			<form method="post" action="AddPets" class="form-horizontal" enctype="multipart/form-data">
 				
 				<!-- Pet Name -->
 				<div class="form-group">
@@ -44,9 +44,10 @@
 						<select class="form-control" name="petTypeID" required>
 							<%
 							List<PetType> listType = (List) request.getAttribute("typePet");
+							%>
 							
-							for(PetType item : listType) {%>
-								<option><%=item.getTypeName() %></option>
+							<%for(PetType item : listType) {%>
+								<option value="<%=item.getPetTypeID()%>"><%=item.getTypeName() %></option>
 							<%} %>
 						    
 						  </select>
@@ -66,12 +67,12 @@
 			      	<label class="col-sm-2 control-label">Health</label>
 			      	<div class="col-sm-8">
 			        	
-						<select class="form-control" name="petTypeID" required>
+						<select class="form-control" name="healthTypeID" required>
 							<%
 							List<Health> listHealth = (List) request.getAttribute("health");
 							
 							for(Health item : listHealth) {%>
-								<option><%=item.getHealthName() %></option>
+								<option value="<%=item.getHealthID()%>"><%=item.getHealthName() %></option>
 							<%} %>
 						    
 						  </select>
@@ -84,6 +85,30 @@
 			      	<div class="col-sm-8">
 			        	<input type="radio" name="rad_Status" value="live" checked> Live
 			        	<input type="radio" name="rad_Status" value="die"> Die
+			      	</div>
+			    </div>
+			    
+			     <!-- Quantity -->
+				<div class="form-group">
+			      	<label class="col-sm-2 control-label">Quantity</label>
+			      	<div class="col-sm-8">
+			        	<input type="number" name="quantity" min="1" max="999" class="form-control" placeholder="Quantity" required>
+			      	</div>
+			    </div>
+			    
+			    <!-- Note -->
+				<div class="form-group">
+			      	<label class="col-sm-2 control-label">Note</label>
+			      	<div class="col-sm-8">
+			        	<input class="form-control" name="note" type="text" placeholder="Note !! [option]">
+			      	</div>
+			    </div>
+			    
+			    <!-- Description -->
+				<div class="form-group">
+			      	<label class="col-sm-2 control-label">Description</label>
+			      	<div class="col-sm-8">
+			        	<input class="form-control" name="description" type="text" placeholder="Note !! [option]">
 			      	</div>
 			    </div>
 			    
