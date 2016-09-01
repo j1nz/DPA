@@ -1,10 +1,12 @@
 package internship.fpt.dpa.model.dao;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import internship.fpt.dpa.common.ConnectDB;
@@ -238,10 +240,34 @@ public class AccountDAO {
 				list.add(acc);
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return list;
 	}
 	
+	public void addAccount(Account acc) {
+		String sql = "INSERT INTO Account VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+		
+		try {
+			pstm = cn.prepareStatement(sql);
+			
+			pstm.setString(1, acc.getUsername());
+			pstm.setString(2, acc.getPassword());
+			pstm.setString(3, acc.getEmail());
+			pstm.setInt(4, acc.getMemberID());
+			pstm.setInt(5, acc.getRoleID());
+			pstm.setDate(6, new Date(Calendar.getInstance().getTime().getTime()));
+			pstm.setDate(7, (Date) acc.getDateExpires());
+			pstm.setString(8, acc.getAvatar());
+			
+			pstm.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		
+		
+		
+	}
 }

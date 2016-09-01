@@ -11,6 +11,7 @@ import java.util.List;
 import internship.fpt.dpa.common.ConnectDB;
 import internship.fpt.dpa.common.SQLCommand;
 import internship.fpt.dpa.model.bean.Donate;
+import internship.fpt.dpa.model.bean.Pet;
 
 public class DonateDAO {
 	private static DonateDAO instance;
@@ -29,18 +30,34 @@ public class DonateDAO {
 		return instance;
 	}
 
-	public void addDonate(Donate dn) {
-		String sql = "INSERT INTO Donate "
-				+ "VALUES(?, ?, ?, ?)";
+	public void addDonate(Donate dn, Pet p) {
+		String sql = "DECLARE @tempDonate TABLE(donateID INT)"
+				+ " INSERT INTO Donate "
+				+ "OUTPUT(Inserted.donateID) INTO @tempDonate"
+				+ " VALUES(?, ?, ?, ?) "
+				+ "INSERT INTO Pet VALUES(?, ?, ?, ?, ?, ?, (SELECT donateID FROM @tempDonate), ?, ?, ?, ?)"
+				+ " DELETE FROM @tempDonate WHERE 1=1";
+		
 		try {
 			pstm = cn.prepareStatement(sql);
+			
 			pstm.setString(1, dn.getUsername());
 			pstm.setDate(2, (Date) dn.getDateDonate());
 			pstm.setInt(3, dn.getQuantity());
 			pstm.setString(4, dn.getNote());
 			
-			pstm.executeUpdate();
+			pstm.setString(5, p.getPetName());
+			pstm.setInt(6, p.getAge());
+			pstm.setInt(7, p.getPetTypeID());
+			pstm.setString(8, p.getNickname());
+			pstm.setInt(9, p.getHealthID());
+			pstm.setInt(10, p.getStatus());
+			pstm.setString(11, p.getUsername());
+			pstm.setDate(12, (Date) p.getDateReceived());
+			pstm.setString(13, p.getAvatar());
+			pstm.setString(14, p.getDescription());
 			
+			pstm.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

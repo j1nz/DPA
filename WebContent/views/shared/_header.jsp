@@ -6,7 +6,7 @@
 	<link rel="stylesheet" href="css/bootstrap.min.css">
 	<link rel="stylesheet" href="css/font-awesome.css">
 	<link rel="stylesheet" href="css/style.css" >
-	
+	<link rel="stylesheet" type="text/css" href="css/admin.css">
 	<script src="js/jquery.min.js"></script>
 
 	<!-- Navigation -->
@@ -78,7 +78,7 @@
 	
 	
 	<!-- popup sign in -->
-	<div class="user-modal">
+	<div class="user-modal" style="z-index:12">
 	      <div class="user-modal-container">
 	      <ul class="switcher">
 	        <li><a href="#0">Sign in</a></li>
@@ -98,13 +98,13 @@
 	        	</p>
 	          <p class="fieldset">
 	            <label class="image-replace email" for="signin-email">E-mail</label>
-	            <input class="full-width has-padding has-border" id="username" type="text" placeholder="E-mail">
+	            <input class="full-width has-padding has-border" name="username" type="text" placeholder="E-mail">
 	            <span class="error-message">An account with this email address does not exist!</span>
 	          </p>
 	
 	          <p class="fieldset">
 	            <label class="image-replace password" for="signin-password">Password</label>
-	            <input class="full-width has-padding has-border" id="password" type="password"  placeholder="Password">
+	            <input class="full-width has-padding has-border" name="password" type="password"  placeholder="Password">
 	            <a href="#0" class="hide-password">Show</a>
 	            <span class="error-message">Wrong password! Try again.</span>
 	          </p>
@@ -124,22 +124,22 @@
 	      </div>
 	
 	      <div id="signup">
-	        <form class="form">
+	        <form class="form" action="SignUp" method="POST">
 	          <p class="fieldset">
 	            <label class="image-replace username" for="signup-username">Username</label>
-	            <input class="full-width has-padding has-border" id="signup-username" type="text" placeholder="Username">
+	            <input class="full-width has-padding has-border" id="signup-username" name="username" type="text" placeholder="Username">
 	            <span class="error-message">Your username can only contain numeric and alphabetic symbols!</span>
 	          </p>
 	
 	          <p class="fieldset">
 	            <label class="image-replace email" for="signup-email">E-mail</label>
-	            <input class="full-width has-padding has-border" id="signup-email" type="email" placeholder="E-mail">
+	            <input class="full-width has-padding has-border" id="signup-email" name="mail" type="email" placeholder="E-mail">
 	            <span class="error-message">Enter a valid email address!</span>
 	          </p>
 	
 	          <p class="fieldset">
 	            <label class="image-replace password" for="signup-password">Password</label>
-	            <input class="full-width has-padding has-border" id="signup-password" type="password"  placeholder="Password">
+	            <input class="full-width has-padding has-border" id="signup-password" type="password" name="password" placeholder="Password">
 	            <a href="#0" class="hide-password">Show</a>
 	            <span class="error-message">Your password has to be at least 6 characters long!</span>
 	          </p>
@@ -163,7 +163,7 @@
 	        <form class="form">
 	          <p class="fieldset">
 	            <label class="image-replace email" for="reset-email">E-mail</label>
-	            <input class="full-width has-padding has-border" id="reset-email" type="email" placeholder="E-mail">
+	            <input class="full-width has-padding has-border" id="reset-email" name="email" type="email" placeholder="E-mail">
 	            <span class="error-message">An account with this email does not exist!</span>
 	          </p>
 	

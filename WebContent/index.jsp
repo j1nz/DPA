@@ -72,7 +72,7 @@
 					    <div id="products" class="row list-group">
 					    	<%for(Pet p : l) {
 					    		String image = p.getAvatar();
-					    		if("".equals(image))
+					    		if("".equals(image) || null == image)
 					    			image = "images/pet/meo.jpg";
 					    		
 					    		

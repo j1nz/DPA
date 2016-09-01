@@ -1,8 +1,8 @@
 package internship.fpt.dpa.controller.home;
 
 import java.io.IOException;
-import java.util.Date;
 
+import javax.jws.WebMethod;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -52,7 +52,6 @@ public class LoginServlet extends HttpServlet {
 		
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
-		
 		Account acc  = new Account();
 		PasswordEncryption pe = PasswordEncryption.getInstance();
 		

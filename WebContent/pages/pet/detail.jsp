@@ -46,7 +46,7 @@
 	            	<div class="col-lg-8 col-xs-12">
 	            		<div class="caption-full">
 	                        <h4 class="pull-right"><a class="btn btn-success" href="ShowGivePet?id=<%=p.getPetID()%>">Give It</a></h4>
-	                        <h4><a href="#"><%=p.getPetName() %></a>
+	                        <h4><a href="#">Name: <%=p.getPetName() %></a>
 	                        </h4>
 	                        <p><%=p.getAge() %></p>
 	                        <p><%=pt.getTypeName() %></p>

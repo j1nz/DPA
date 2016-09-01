@@ -31,7 +31,7 @@
 						<th>Status</th>
 						<th>DonateID</th>
 						<th>Adoption</th>
-						<th>Date Donate</th>
+						<th>Date Received</th>
 						
 						
 						<th colspan="2">Option</th>

@@ -17,7 +17,7 @@
 			<h2 style="color: red">Add Pets</h2>
 
 			
-			<form method="post" action="AddPets" class="form-horizontal" enctype="multipart/form-data">
+			<form action="AddPets" class="form-horizontal" enctype="multipart/form-data" method="post">
 				
 				<!-- Pet Name -->
 				<div class="form-group">

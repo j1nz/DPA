@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import internship.fpt.dpa.model.bean.Donate;
+import internship.fpt.dpa.model.bean.Pet;
 import internship.fpt.dpa.model.dao.DonateDAO;
 
 public class DonateBO {
@@ -21,9 +22,9 @@ public class DonateBO {
 		return instance;
 	}
 	
-	public void addDonate(Donate dn) {
+	public void addDonate(Donate dn, Pet p) {
 		DonateDAO dndao = DonateDAO.getInstance();
-		dndao.addDonate(dn);
+		dndao.addDonate(dn, p);
 	}
 	
 	public List<Donate> getAllDonate() {
