@@ -8,7 +8,7 @@
 
 	<!-- container -->
 	<div class="container">
-	<jsp:include page="/views/shared/_slide.html"></jsp:include>
+	<jsp:include page="/views/shared/_slide.jsp"></jsp:include>
 
 		<!-- row content -->
 		<div class="row">

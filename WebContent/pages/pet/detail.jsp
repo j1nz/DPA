@@ -17,7 +17,7 @@
 <body>
 	<!-- Page Content -->
     <div class="container">
-		<jsp:include page="/views/shared/_slide.html"></jsp:include>
+		<jsp:include page="/views/shared/_slide.jsp"></jsp:include>
         <div class="row">
 
             <div class="col-md-3">

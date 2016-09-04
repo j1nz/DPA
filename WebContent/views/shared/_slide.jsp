@@ -1,3 +1,4 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!-- row slider -->
 <div class="row">
 	<!-- slider -->
@@ -17,8 +18,8 @@
 			      <img src="images/pet/pet_banner.jpg" alt="...">
 		        	<div class="container">
 				    	<div class="carousel-caption">
-					        <h3>First slide label</h3>
-					        <p>It's Responsive and Pauses on hover</p>
+					        <h3>Da Nang Pets Adoption</h3>
+					        <p>It's project help pets in Da Nang city</p>
 				        </div>
 				    </div>
 				</div>
@@ -26,8 +27,8 @@
 			    	<img src="images/pet/cho_banner.png" alt="...">
 			        <div class="container">
 				        <div class="carousel-caption">
-					        <h3>Second slide label</h3>
-					        <p>If you use controls, progress bar will change too.</p>
+					        <h3>Thú nuôi quen thuộc</h3>
+					        <p>Nếu bạn là người yêu động vật thì hãy giúp chúng tôi</p>
 				        </div>
 			        </div>
 			    </div>
@@ -35,8 +36,8 @@
 			    	<img src="images/pet/meo_banner.jpg" alt="...">
 			        <div class="container">
 				        <div class="carousel-caption">
-					        <h3>Third slide label</h3>
-					        <p>Bug fixed</p>
+					        <h3>Loài mèo</h3>
+					        <p>Giống mèo luôn tạo ra sự hấp dẫn trong mắt chúng ta</p>
 				        </div>
 			        </div>
 			    </div>
@@ -45,8 +46,8 @@
 			    	<img src="images/pet/vet_banner.jpg" alt="...">
 			        <div class="container">
 				        <div class="carousel-caption">
-					        <h3>Third slide label</h3>
-					        <p>Bug fixed</p>
+					        <h3>Loài vẹt</h3>
+					        <p>Với khả năng nhái giọng, loài vẹt tạo ra điểm nhấn riêng</p>
 				        </div>
 			        </div>
 			    </div>
@@ -54,8 +55,8 @@
 			    	<img src="images/pet/vet_meo_banner.jpg" alt="...">
 			        <div class="container">
 				        <div class="carousel-caption">
-					        <h3>Third slide label</h3>
-					        <p>Bug fixed</p>
+					        <h3>Chung tay bảo vệ động vật nuôi</h3>
+					        <p>Giúp những loài động vật nuôi đang bị hoang lạc</p>
 				        </div>
 			        </div>
 			    </div>

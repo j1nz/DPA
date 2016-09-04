@@ -1,6 +1,7 @@
 eclipse.preferences.version=1
 encoding//WebContent/css/style-sale.css=UTF-8
 encoding//WebContent/pages/management/welcome.jsp=UTF-8
+encoding//WebContent/views/shared/_slide.jsp=UTF-8
 encoding//src/internship/fpt/dpa/common/SQLCommand.java=UTF-8
 encoding//src/internship/fpt/dpa/controller/management/pet/AddImagesServlet.java=UTF-8
 encoding//src/internship/fpt/dpa/controller/management/pet/AddPet.java=UTF-8
