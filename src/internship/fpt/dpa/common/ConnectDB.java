@@ -30,7 +30,7 @@ public class ConnectDB {
 	}
 
 	/**
-	 * 
+	 * Contructor
 	 */
 	public ConnectDB() {
 		
